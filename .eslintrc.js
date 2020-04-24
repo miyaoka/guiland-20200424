@@ -1,3 +1,5 @@
+const prodOnly = process.env.NODE_ENV === 'production' ? 'error' : 'warn'
+
 module.exports = {
   root: true,
   env: {
@@ -14,8 +16,10 @@ module.exports = {
     ecmaVersion: 2020,
   },
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console': prodOnly,
+    'no-debugger': prodOnly,
+    'vue/no-unused-components': prodOnly,
+    'vue/require-v-for-key': prodOnly,
   },
   overrides: [
     {
